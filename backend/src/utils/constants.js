@@ -1,0 +1,23 @@
+module.exports = {
+  HTTP_STATUS: {
+    OK: 200,
+    CREATED: 201,
+    BAD_REQUEST: 400,
+    NOT_FOUND: 404,
+    CONFLICT: 409,
+    UNPROCESSABLE_ENTITY: 422,
+    INTERNAL_SERVER_ERROR: 500
+  },
+  EVENTS: {
+    LOW_STOCK: 'LOW_STOCK_ALERT'
+  },
+  CACHE_KEYS: {
+    MEDICINE_LIST_PREFIX: 'medicines_list:',
+    MEDICINE_DETAIL_PREFIX: 'medicine_detail:'
+  },
+  ORDER_STATUS: {
+    COMPLETED: 'COMPLETED',
+    CANCELLED: 'CANCELLED',
+    PENDING: 'PENDING'
+  }
+};
