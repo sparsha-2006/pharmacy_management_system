@@ -41,17 +41,26 @@ Provide a structured JSON response with:
 3. "usage_advice": Precautions, recommended dosage, and when to consult a doctor.
 4. "disclaimer": Medical advice disclaimer.`;
         }
-        const response = await aiClient.models.generateContent({
-          model: modelName,
-          contents: prompt
-        });
-        const textOutput = response.text || '';
-        return {
-          ai_provider: 'Google Gemini AI',
-          model: modelName,
-          raw_response: textOutput
-        };
+       const response = await aiClient.models.generateContent({
+  model: modelName,
+  contents: prompt,
+});
+
+console.log("===== GEMINI RESPONSE =====");
+console.dir(response, { depth: null });
+
+const textOutput =
+  typeof response.text === "function"
+    ? response.text()
+    : response.text || JSON.stringify(response);
+
+return {
+  ai_provider: "Google Gemini AI",
+  model: modelName,
+  raw_response: textOutput,
+};
       } catch (err) {
+        
         console.warn(`[Gemini AI Call Failed] ${err.message}. Falling back to Rule-Based Recommendation Engine.`);
       }
     }

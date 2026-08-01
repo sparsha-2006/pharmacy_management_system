@@ -4,33 +4,32 @@ require("dotenv").config();
 const apiKey = process.env.GEMINI_API_KEY;
 const modelName = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
-let aiInstance = null;
+let aiClient = null;
 
-if (apiKey && apiKey !== "your_gemini_api_key_here") {
-  try {
-    aiInstance = new GoogleGenAI({
-      apiKey,
+try {
+  if (apiKey && apiKey.trim() !== "" && apiKey !== "your_gemini_api_key") {
+    aiClient = new GoogleGenAI({
+      apiKey: apiKey,
     });
 
     console.log(
       `[Gemini AI] Initialized successfully with model "${modelName}"`
     );
-  } catch (err) {
+  } else {
     console.warn(
-      `[Gemini AI Warning] Failed to initialize: ${err.message}`
+      "[Gemini AI] No valid GEMINI_API_KEY found. Rule-based recommendations will be used."
     );
   }
-} else {
-  console.log(
-    "[Gemini AI] GEMINI_API_KEY not configured. Rule-based recommendations will be used."
-  );
+} catch (err) {
+  console.error("[Gemini AI] Initialization Failed:");
+  console.error(err);
 }
 
-const getGeminiClient = () => aiInstance;
+const getGeminiClient = () => aiClient;
 
 const getGeminiModelName = () => modelName;
 
-const isGeminiEnabled = () => aiInstance !== null;
+const isGeminiEnabled = () => aiClient !== null;
 
 module.exports = {
   getGeminiClient,
