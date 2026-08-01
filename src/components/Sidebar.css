@@ -1,0 +1,37 @@
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:240px;
+height:100vh;
+background:#1e3a8a;
+padding:30px 20px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+color:white;
+margin-bottom:40px;
+font-size:28px;
+}
+
+.sidebar a{
+color:white;
+text-decoration:none;
+padding:14px;
+margin-bottom:10px;
+border-radius:10px;
+display:flex;
+align-items:center;
+gap:10px;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+}
+
+.sidebar .active{
+background:#3b82f6;
+}
