@@ -1,0 +1,16 @@
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+}
+
+.navbar-right{
+display:flex;
+gap:20px;
+font-size:26px;
+}
+
+.icon{
+cursor:pointer;
+}
