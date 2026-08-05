@@ -1,0 +1,160 @@
+/* ============================= */
+/*        Profile Page           */
+/* ============================= */
+
+.profile-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ============================= */
+/*        Profile Card           */
+/* ============================= */
+
+.profile-card {
+  width: 430px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ============================= */
+/*            Title              */
+/* ============================= */
+
+.profile-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+/* ============================= */
+/*          Avatar               */
+/* ============================= */
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================= */
+/*      Name & Role              */
+/* ============================= */
+
+.profile-name {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+}
+
+.profile-role {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* ============================= */
+/*      Information Card         */
+/* ============================= */
+
+.profile-info {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+}
+
+.info-group {
+  margin-bottom: 20px;
+}
+
+.info-label {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ============================= */
+/*          Buttons              */
+/* ============================= */
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.dashboard-btn,
+.logout-btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.dashboard-btn {
+  background: #2563eb;
+}
+
+.dashboard-btn:hover {
+  background: #1d4ed8;
+}
+
+.logout-btn {
+  background: #dc2626;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+}
+
+/* ============================= */
+/*       Responsive Design       */
+/* ============================= */
+
+@media (max-width: 500px) {
+
+  .profile-card {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+}

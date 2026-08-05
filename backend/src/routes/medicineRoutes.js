@@ -6,4 +6,5 @@ const { validateAddMedicine, validateGetMedicineList } = require('../middleware/
 router.post('/', validateAddMedicine, MedicineController.addMedicine);
 // API 3: Get Medicine List
 router.get('/', validateGetMedicineList, MedicineController.getMedicineList);
+
 module.exports = router;

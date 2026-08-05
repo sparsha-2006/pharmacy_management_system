@@ -1,35 +1,38 @@
+import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import OrderCard from "../components/OrderCard";
+import api from "../services/api";
 
-const orders = [
-  {
-    id: 101,
-    customer: "Rahul",
-    medicine: "Paracetamol",
-    quantity: 2,
-    total: 40,
-    status: "Delivered",
-  },
-  {
-    id: 102,
-    customer: "Sneha",
-    medicine: "Dolo 650",
-    quantity: 1,
-    total: 35,
-    status: "Pending",
-  },
-  {
-    id: 103,
-    customer: "Kiran",
-    medicine: "Benadryl",
-    quantity: 3,
-    total: 285,
-    status: "Delivered",
-  },
-];
+export default function Orders() {
+  const [orders, setOrders] = useState([]);
 
-function Orders() {
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadOrders() {
+      try {
+        const res = await api.get("/orders");
+
+        console.log(res.data);
+
+        const orderList = res.data.data || res.data;
+
+        if (!cancelled) {
+          setOrders(orderList);
+        }
+      } catch (err) {
+        console.error("Orders Error:", err);
+      }
+    }
+
+    loadOrders();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <>
       <Sidebar />
@@ -41,12 +44,17 @@ function Orders() {
           Customer Orders
         </h1>
 
-        {orders.map((order) => (
-          <OrderCard key={order.id} order={order} />
-        ))}
+        {orders.length === 0 ? (
+          <p>No Orders Found</p>
+        ) : (
+          orders.map((order) => (
+            <OrderCard
+              key={order.id}
+              order={order}
+            />
+          ))
+        )}
       </div>
     </>
   );
 }
-
-export default Orders;

@@ -18,7 +18,21 @@ class OrderController {
       next(err);
     }
   }
-  
+  static async getAllOrders(req, res) {
+  try {
+    const orders = await OrderService.getAllOrders();
+
+    return res.status(200).json({
+      success: true,
+      data: orders,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
   // API 5: Get Order Details
   static async getOrderDetails(req, res, next) {
     try {
