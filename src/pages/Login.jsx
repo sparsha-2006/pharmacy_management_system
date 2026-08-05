@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCapsules, FaUserMd, FaShieldAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -5,10 +6,26 @@ import { motion } from "framer-motion";
 function Login() {
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Later this will call backend login API
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
+    // Temporary login (until backend is connected)
+    const user = {
+      name: email.split("@")[0],
+      email: email,
+      role: "Administrator",
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
     navigate("/dashboard");
   };
 
@@ -58,16 +75,20 @@ function Login() {
           <input
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             style={styles.input}
           />
 
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={styles.input}
           />
 
-          <button style={styles.button}>
+          <button type="submit" style={styles.button}>
             Login
           </button>
         </form>
@@ -80,7 +101,7 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    background: "linear-gradient(135deg,#2563eb,#4f46e5)"
+    background: "linear-gradient(135deg,#2563eb,#4f46e5)",
   },
 
   left: {
@@ -89,19 +110,19 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    padding: "80px"
+    padding: "80px",
   },
 
   title: {
     fontSize: "55px",
-    fontWeight: "700"
+    fontWeight: "700",
   },
 
   subtitle: {
     marginTop: 15,
     marginBottom: 50,
     fontSize: "18px",
-    lineHeight: 1.8
+    lineHeight: 1.8,
   },
 
   feature: {
@@ -109,7 +130,7 @@ const styles = {
     alignItems: "center",
     gap: 15,
     marginBottom: 25,
-    fontSize: "18px"
+    fontSize: "18px",
   },
 
   card: {
@@ -118,7 +139,7 @@ const styles = {
     margin: "auto",
     borderRadius: 20,
     padding: 40,
-    boxShadow: "0 15px 40px rgba(0,0,0,.2)"
+    boxShadow: "0 15px 40px rgba(0,0,0,.2)",
   },
 
   input: {
@@ -127,7 +148,8 @@ const styles = {
     marginBottom: 20,
     borderRadius: 10,
     border: "1px solid #ddd",
-    fontSize: 16
+    fontSize: 16,
+    boxSizing: "border-box",
   },
 
   button: {
@@ -138,8 +160,9 @@ const styles = {
     border: "none",
     borderRadius: 10,
     fontSize: 17,
-    fontWeight: "600"
-  }
+    fontWeight: "600",
+    cursor: "pointer",
+  },
 };
 
 export default Login;

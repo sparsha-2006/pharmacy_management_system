@@ -1,6 +1,6 @@
 import "./Navbar.css";
-import { FaBell, FaUserCircle } from "react-icons/fa";
-
+import { FaBell } from "react-icons/fa";
+import ProfileDropdown from "../components/ProfileDropdown";
 function Navbar({ title }) {
   return (
     <div className="navbar">
@@ -9,8 +9,11 @@ function Navbar({ title }) {
       </div>
 
       <div className="navbar-right">
-        <FaBell className="icon" />
-        <FaUserCircle className="icon profile" />
+        <div className="top-icons">
+          <FaBell className="icon" />
+
+           <ProfileDropdown />
+        </div>
       </div>
     </div>
   );

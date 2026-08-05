@@ -10,7 +10,7 @@ import OrderDetails from "./pages/OrderDetails";
 import Alerts from "./pages/Alerts";
 import AIRecommendation from "./pages/AIRecommendation";
 import Analytics from "./pages/Analytics";
-
+import Profile from "./pages/Profile";
 function App() {
   return (
     <Routes>
@@ -42,6 +42,9 @@ function App() {
 
       {/* Invalid URL */}
       <Route path="*" element={<Navigate to="/" />} />
+
+      <Route path="/profile" element={<Profile />} />
+      
     </Routes>
   );
 }

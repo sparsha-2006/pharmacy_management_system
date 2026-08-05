@@ -1,4 +1,4 @@
-import { FaUser, FaMoneyBillWave, FaBox } from "react-icons/fa";
+import { FaUser, FaMoneyBillWave } from "react-icons/fa";
 
 function OrderCard({ order }) {
   return (
@@ -11,32 +11,32 @@ function OrderCard({ order }) {
         marginBottom: "20px",
       }}
     >
-      <h3 style={{ color: "#2563eb" }}>Order #{order.id}</h3>
+      <h3 style={{ color: "#2563eb" }}>
+        Order #{order.id}
+      </h3>
 
       <p>
-        <FaUser /> <b>Customer:</b> {order.customer}
+        <FaUser /> <b>User ID:</b> {order.user_id}
       </p>
 
       <p>
-        <FaBox /> <b>Medicine:</b> {order.medicine}
+        <FaMoneyBillWave /> <b>Total:</b> ₹{order.total_amount}
       </p>
 
       <p>
-        Quantity: {order.quantity}
+        <b>Status:</b>{" "}
+        <span
+          style={{
+            color:
+              order.status === "COMPLETED"
+                ? "green"
+                : "orange",
+            fontWeight: "bold",
+          }}
+        >
+          {order.status}
+        </span>
       </p>
-
-      <p>
-        <FaMoneyBillWave /> ₹{order.total}
-      </p>
-
-      <span
-        style={{
-          color: order.status === "Delivered" ? "green" : "orange",
-          fontWeight: "bold",
-        }}
-      >
-        {order.status}
-      </span>
     </div>
   );
 }

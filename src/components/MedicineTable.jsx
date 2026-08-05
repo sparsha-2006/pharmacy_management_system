@@ -1,37 +1,41 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const medicines = [
-  {
-    id: 1,
-    name: "Paracetamol",
-    category: "Tablet",
-    stock: 120,
-    price: 20
-  },
-  {
-    id: 2,
-    name: "Amoxicillin",
-    category: "Capsule",
-    stock: 65,
-    price: 120
-  },
-  {
-    id: 3,
-    name: "Dolo 650",
-    category: "Tablet",
-    stock: 35,
-    price: 35
-  },
-  {
-    id: 4,
-    name: "Benadryl",
-    category: "Syrup",
-    stock: 18,
-    price: 95
-  }
-];
+export default function MedicineTable() {
+  const [medicines, setMedicines] = useState([]);
 
-function MedicineTable() {
+  useEffect(() => {
+    const fetchMedicines = async () => {
+  try {
+    const res = await api.get("/medicines");
+
+    console.log("Response:", res.data);
+    console.log("Data:", res.data.data);
+    console.log("Is Array:", Array.isArray(res.data.data));
+
+    setMedicines(res.data.data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+    fetchMedicines();
+  }, []);
+
+  const handleDelete = (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this medicine?"
+  );
+
+  if (!confirmDelete) return;
+
+  setMedicines((prev) => prev.filter((medicine) => medicine.id !== id));
+};
+
+  
+console.log(medicines);
+console.log(Array.isArray(medicines));
   return (
     <div className="card">
       <table>
@@ -47,45 +51,26 @@ function MedicineTable() {
         </thead>
 
         <tbody>
-          {medicines.map((med) => (
-            <tr key={med.id}>
-              <td>{med.id}</td>
-              <td>{med.name}</td>
-              <td>{med.category}</td>
+  {medicines.map((medicine) => (
+    <tr key={medicine.id}>
+      <td>{medicine.id}</td>
+      <td>{medicine.name}</td>
+      <td>{medicine.category}</td>
+      <td>{medicine.stock}</td>
+      <td>{medicine.price}</td>
 
-              <td
-                style={{
-                  color: med.stock < 30 ? "red" : "green",
-                  fontWeight: "bold",
-                }}
-              >
-                {med.stock}
-              </td>
+      <td>
+        <FaEdit style={{ color: "blue" }} />
 
-              <td>₹{med.price}</td>
-
-              <td>
-                <FaEdit
-                  style={{
-                    color: "#2563eb",
-                    cursor: "pointer",
-                    marginRight: 20,
-                  }}
-                />
-
-                <FaTrash
-                  style={{
-                    color: "red",
-                    cursor: "pointer",
-                  }}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        <FaTrash
+          style={{ color: "red", cursor: "pointer" }}
+          onClick={() => handleDelete(medicine.id)}
+        />
+      </td>
+    </tr>
+  ))}
+</tbody>
       </table>
     </div>
   );
 }
-
-export default MedicineTable;

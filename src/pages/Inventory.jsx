@@ -1,30 +1,25 @@
+import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-
-const inventory = [
-  {
-    id: 1,
-    name: "Paracetamol",
-    stock: 120,
-  },
-  {
-    id: 2,
-    name: "Dolo 650",
-    stock: 40,
-  },
-  {
-    id: 3,
-    name: "Benadryl",
-    stock: 18,
-  },
-  {
-    id: 4,
-    name: "Crocin",
-    stock: 12,
-  },
-];
+import api from "../services/api";
 
 function Inventory() {
+  const [inventory, setInventory] = useState([]);
+
+  useEffect(() => {
+    const fetchInventory = async () => {
+      try {
+        const res = await api.get("/medicines");
+
+        setInventory(res.data.data);
+      } catch (err) {
+        console.error("Inventory Error:", err);
+      }
+    };
+
+    fetchInventory();
+  }, []);
+
   return (
     <>
       <Sidebar />
@@ -33,7 +28,6 @@ function Inventory() {
         <Navbar title="Inventory" />
 
         <div className="card">
-
           <h2 style={{ marginBottom: "20px" }}>
             Medicine Inventory
           </h2>
@@ -53,21 +47,23 @@ function Inventory() {
                   <td>{item.id}</td>
 
                   <td>{item.name}</td>
-
-                  <td
-                    style={{
-                      color: item.stock < 30 ? "red" : "green",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.stock}
-                  </td>
+ <td
+  style={{
+    color:
+      Number(item.stock) <= 20
+        ? "#dc2626"
+        : "#16a34a",
+    fontWeight: "bold",
+    fontSize: "18px",
+  }}
+>
+  {item.stock}
+</td>
                 </tr>
               ))}
             </tbody>
 
           </table>
-
         </div>
       </div>
     </>
