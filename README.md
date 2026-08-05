@@ -1,16 +1,92 @@
-# React + Vite
+# 💊 PharmaFlow - Pharmacy Order & Inventory Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PharmaFlow is a full-stack web application that helps pharmacies efficiently manage medicine inventory and customer orders. The project follows the **MVC architecture** and provides a modern, user-friendly interface for pharmacy administrators.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+### Authentication
+- Admin Login
+- Profile Page
+- Logout
+  
+### Medicine Management
+- Add New Medicines
+- View Medicine List
+- Search Medicines
+- Medicine Categories
+- Stock Availability
 
-## React Compiler
+### Inventory Management
+- View Inventory
+- Monitor Stock Levels
+- Low Stock Alerts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+###  Order Management
+- View Customer Orders
+- Order Status Tracking
 
-## Expanding the ESLint configuration
+###  Dashboard
+- Total Medicines
+- Total Orders
+- Inventory Summary
+- Quick Navigation Cards
+  
+### AI Assistant
+- Medicine Recommendations
+- Alternative Medicine Suggestions
+- Pharmacy AI Support (UI)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Analytics
+- Inventory Overview
+- Sales Summary (UI)
+- Medicine Statistics
+
+
+##Tech Stack
+**Frontend**
+- React.js
+- Vite
+- React Router
+- Framer Motion
+- React Icons
+- 
+**Backend**
+- Node.js
+- Express.js
+
+**Database**
+- PostgreSQL
+
+**Others**
+- Redis
+- Postman
+- Google Gemini API 
+
+
+## Installation
+### Clone the Repository
+```bash
+git clone https://github.com/<your-username>/<repository-name>.git
+```
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+### Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
+##  Future Enhancements
+
+- JWT Authentication
+- Search & Filter
+- Role-Based Access
+- AI Medicine Recommendations
+- Email Notifications
+
