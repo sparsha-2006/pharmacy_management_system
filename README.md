@@ -2,7 +2,8 @@
 
 PharmaFlow is a full-stack web application that helps pharmacies efficiently manage medicine inventory and customer orders. The project follows the **MVC architecture** and provides a modern, user-friendly interface for pharmacy administrators.
 
----
+The api documentation,system design documentation and the postman testing screenshots have been attached in the drive link
+https://drive.google.com/drive/folders/16U9jtSzr9_yVT-6j6ODBZBIAlGX964iG?usp=sharing
 
 ## Features
 ### Authentication
